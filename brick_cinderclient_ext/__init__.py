@@ -86,6 +86,10 @@ def do_get_connector(client, args):
            metavar='<enforce_multipath>',
            default=False,
            help=ENFORCE_MULTIPATH_HELP_MESSAGE)
+@utils.arg('--nic',
+           metavar='<nic>',
+           default=None,
+           help=NETWORK_INTERFACE_HELP_MESSAGE)
 @brick_utils.require_root
 def do_local_attach(client, args):
     hostname = args.hostname
@@ -96,8 +100,8 @@ def do_local_attach(client, args):
                                      args.mountpoint,
                                      args.mode,
                                      args.multipath,
-                                     args.enforce_multipath)
-
+                                     args.enforce_multipath,
+                                     args.nic)
     utils.print_dict(device_info)
 
 
